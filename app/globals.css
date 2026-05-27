@@ -1,26 +1,160 @@
 @import "tailwindcss";
 
+@theme {
+    --font-display: "Playfair Display", serif;
+    --font-mono: "DM Mono", monospace;
+}
+
+/* ── DARK SKETCHBOOK THEME ──────────────────────────────────────────── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* Backgrounds — warm near-blacks, like a studio at 2am */
+    --bg-primary: #0e0c0a; /* main — almost black with warm undertone */
+    --bg-secondary: #161310; /* cards, panels */
+    --bg-surface: #1f1a15; /* inputs, raised elements */
+    --bg-raised: #28211a; /* hover states */
+
+    /* Accent — candlelight amber */
+    --accent: #d97706; /* amber-600 */
+    --accent-dim: #92400e; /* sepia/ink */
+    --accent-subtle: rgba(217, 119, 6, 0.1);
+    --accent-glow: rgba(217, 119, 6, 0.2);
+
+    /* Text — aged paper tones */
+    --text-primary: #f5f0e8; /* warm off-white */
+    --text-secondary: #a89880; /* warm grey */
+    --text-muted: #5c4f3d; /* very muted warm brown */
+
+    /* Borders — subtle warm lines */
+    --border: rgba(217, 119, 6, 0.12);
+    --border-bright: rgba(217, 119, 6, 0.25);
+
+    /* Shadows — warm and deep */
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(217, 119, 6, 0.05);
+    --shadow-lg:
+        0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(217, 119, 6, 0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ── BASE ───────────────────────────────────────────────────────────── */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    -webkit-font-smoothing: antialiased;
+    /* Subtle paper texture via CSS noise */
+    background-image:
+        radial-gradient(
+            ellipse at 20% 50%,
+            rgba(217, 119, 6, 0.03) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 80% 20%,
+            rgba(146, 64, 14, 0.04) 0%,
+            transparent 40%
+        );
+}
+
+/* ── UTILITY CLASSES ────────────────────────────────────────────────── */
+
+.bg-primary {
+    background-color: var(--bg-primary);
+}
+.bg-secondary {
+    background-color: var(--bg-secondary);
+}
+.bg-surface {
+    background-color: var(--bg-surface);
+}
+.bg-raised {
+    background-color: var(--bg-raised);
+}
+
+.text-primary {
+    color: var(--text-primary);
+}
+.text-secondary {
+    color: var(--text-secondary);
+}
+.text-muted {
+    color: var(--text-muted);
+}
+.text-accent {
+    color: var(--accent);
+}
+
+.border-default {
+    border-color: var(--border);
+}
+.border-bright {
+    border-color: var(--border-bright);
+}
+.bg-accent {
+    background-color: var(--accent);
+}
+.bg-accent-subtle {
+    background-color: var(--accent-subtle);
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--bg-raised);
+    border-radius: 2px;
+}
+
+/* ── TIMER ANIMATIONS ───────────────────────────────────────────────── */
+
+@keyframes timerPulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes timerFlash {
+    0%,
+    100% {
+        background-color: var(--bg-primary);
+    }
+    50% {
+        background-color: rgba(217, 119, 6, 0.15);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.timer-pulse {
+    animation: timerPulse 1s ease-in-out infinite;
+}
+
+.timer-flash {
+    animation: timerFlash 0.4s ease-in-out 3;
 }

@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  trailingSlash: true,
+  basePath:
+    process.env.NODE_ENV === "production" ? "/drawing-idea-generator" : "",
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
