@@ -38,13 +38,13 @@ export default function Home() {
           className="flex items-center gap-3 mb-4 text-xs tracking-[0.2em] uppercase"
           style={{ color: "var(--accent)" }}
         >
-          <div
+          {/* <div
             className="w-6 h-px"
             style={{
               background: "linear-gradient(90deg, var(--accent), transparent)",
             }}
           />
-          drawing challenge tool
+          drawing challenge tool */}
         </div>
 
         <h1

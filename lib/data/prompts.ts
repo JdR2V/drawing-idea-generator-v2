@@ -444,7 +444,7 @@ export const environmentSeeds: PromptSeed[] = [
   },
   {
     category: "environment",
-    subject: "a forest where the trees grow downward",
+    subject: "a forest where the trees grow from thin to thick",
     modifiers: [
       "roots in the sky",
       "canopy below",
