@@ -1,6 +1,7 @@
 import { type GenerateRequest, type GeneratedPrompt } from "./types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ?? "https://drawing-idea-api.onrender.com";
 
 export async function generatePrompt(
   params: GenerateRequest,
