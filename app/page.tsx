@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { usePromptGenerator } from "@/lib/hooks/usePromptGenerator";
-import { useTimer } from "@/lib/hooks/userTimer";
+import { useTimer } from "@/lib/hooks/useTimer";
 import { PromptControls } from "@/components/generator/PromtControls";
 import { PromptCard } from "@/components/generator/PromptCard";
 import { HistoryDrawer } from "@/components/generator/HistoryDrawer";
